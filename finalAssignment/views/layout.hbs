@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Tracker</title>
+    <link rel="stylesheet" href="../stylesheets/layoutstyle.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="jumbotron">
+                <h1>Player Tracker</h1>
+                <p>Track all game players!</p>
+            </div>
+            <nav>
+                <ul class="navbar">
+                    <li><a class="nav-link active" href="/">Home</a></li>
+                    <li><a class="nav-link" href="/Projects">Players</a></li>
+                    <li><a class="nav-link" href="/Courses">Skills</a></li>
+                
+                    {{#if user}}
+                        <li><a class="nav-link" href="#">{{user.username}}</a></li>
+                        <li><a class="nav-link" href="/Logout">Logout</a></li>
+                    {{else}}
+                        <li><a class="nav-link" href="/Register">Register</a></li>
+                        <li><a class="nav-link login" href="/Login">Login</a></li>
+                    {{/if}}
+                </ul>
+            </nav>
+        </header>
+        <main>
+            {{{body}}}
+        </main>
+    </div>
+    <script src="/javascripts/scripts.js"></script>
+</body>
+</html>

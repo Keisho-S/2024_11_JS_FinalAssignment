@@ -1,0 +1,46 @@
+<h1 style="text-align: center;">{{title}}</h1>
+
+{{!-- CRUD Functionality --}}
+{{!-- CREATE button --}}
+{{! Only show CRUD buttons if there's a session (authenticated user) }}
+{{#if user}}
+  <a href="/projects/add" style="display: block; text-align: center; margin: 20px 0;">Add a new player</a>
+{{/if}}
+
+{{!-- READ Show Table to view all projects in db --}}
+<table style="width: 100%; border-collapse: collapse; margin: 20px auto;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Name</th>
+            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Joining date</th>
+            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Skills</th>
+            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Evaluation</th>
+            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{!-- Retrieve all projects and loop --}}
+        {{#each dataset}}
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">{{this.name}}</td>
+            {{!-- Use the hbs helper function to format the date accordingly --}}
+            <td style="border: 1px solid #ddd; padding: 8px;">{{toShortDate this.dueDate}}</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">{{this.course}}</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">{{this.status}}</td>
+            {{!-- UPDATE and DELETE buttons --}}
+            <td style="border: 1px solid #ddd; padding: 8px;">
+                {{! Only show CRUD buttons if there's a session (authenticated user) }}
+                {{!-- use ../ to navigate out of the for loop into the global scope --}}
+                {{#if ../user}}
+                <a href="/projects/edit/{{this._id}}" style="padding: 5px 10px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">Edit</a>
+                <a
+                    href="/projects/delete/{{this._id}}"
+                    onclick="return confirmDeletion()"
+                    style="padding: 5px 10px; background-color: #dc3545; color: white; text-decoration: none; border-radius: 5px; margin-left: 5px;"
+                >Delete</a>
+                {{/if}}
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

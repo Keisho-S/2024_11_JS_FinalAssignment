@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="../../stylesheets/layoutstyle.css">
+<h1 style="text-align: center; margin-bottom: 20px;">
+  {{title}}
+</h1>
+<form method="POST" style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;">
+  {{! Input names have to match the name of the fields in the mongo schema object }}
+  {{! Mapping is not automatic, but it's best practices }}
+
+  <fieldset style="margin-bottom: 15px;">
+    <label for="name" style="display: block; margin-bottom: 5px;">
+      Name:
+    </label>
+    <input name="name" id="name" required value="{{project.name}}" style="width: 96%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+  </fieldset>
+
+  <fieldset style="margin-bottom: 15px;">
+    <label for="dueDate" style="display: block; margin-bottom: 5px;">
+      Joining date:
+    </label>
+    <input name="dueDate" id="dueDate" required type="date" value="{{toShortDate project.dueDate}}" style="width: 96%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+  </fieldset>
+
+  <fieldset style="margin-bottom: 15px;">
+    <label for="course" style="display: block; margin-bottom: 5px;">
+      Skills:
+    </label>
+    <select name="course" id="course" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+      {{#each courses}}
+        {{! Use HBS helper function to customize rendering }}
+        {{createOptionElement this.name ../project.course}}
+      {{/each}}
+    </select>
+  </fieldset>
+
+  <fieldset style="margin-bottom: 15px;">
+    <label for="status" style="display: block; margin-bottom: 5px;">
+      Evaluation:
+    </label>
+    <select name="status" id="status" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+        {{! Use HBS helper function to customize rendering }}
+        {{createOptionElement "S" project.status}}
+        {{createOptionElement "A" project.status}}
+        {{createOptionElement "B" project.status}}
+    </select>
+  </fieldset>
+
+  {{! Button needs to be inside <form> element to trigger POST }}
+  <button type="submit" style="width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    Save
+  </button>
+</form>

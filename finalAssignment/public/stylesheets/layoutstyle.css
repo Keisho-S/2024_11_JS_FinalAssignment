@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.jumbotron {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.navbar {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.navbar li {
+    margin: 0 10px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.user-nav {
+    margin-left: auto;
+}
+
+main {
+    text-align: left;
+}
+
+h2 {
+    color: #333;
+}
+
+p {
+    margin-top: 15px;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+    .navbar {
+        flex-direction: column; /* Stack navbar items vertically */
+    }
+    * {
+        box-sizing: border-box; /* Include padding and border in element's total width */
+    }
+    
+    
+    /* Increasing horizontal margin based on the order of the list item */
+    .navbar li:nth-child(1) .nav-link {
+        margin-left: 3px; /* First item */
+    }
+    
+    .navbar li:nth-child(2) .nav-link {
+        margin-left: 53px; /* Second item */
+    }
+    
+    .navbar li:nth-child(3) .nav-link {
+        margin-left: 103px; /* Third item */
+    }
+    
+    /* Add more as needed for additional items */
+    .navbar li:nth-child(4) .nav-link {
+        margin-left: 153px; /* Fourth item */
+    }
+    .navbar li:nth-child(5) .nav-link {
+        margin-left: 243px; /* Fourth item */
+    }
+    /* Styles for the active link */
+    .nav-link.active {
+        background-color: #555; /* Background color for active link */
+    }
+    
+    /* Hover effects */
+    .nav-link:hover {
+        background-color: #444; /* Change background on hover */
+        transition: background-color 0.3s; /* Smooth transition */
+    }
+
+    button, button.btn {
+        width: 92%;
+    }
+    
+}
+

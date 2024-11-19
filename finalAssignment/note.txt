@@ -1,0 +1,17 @@
+before running
+
+npm install  
+npm audit
+npm audit fix
+npm audit fix --force
+npm start
+
+
+
+npm install passport-google-oauth20
+
+google
+clentId: 87286914752-fifk2cidbpk8guneghu8v929r763np51.apps.googleusercontent.com
+Client secret: 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
+
+http://localhost:3000/google/callback
